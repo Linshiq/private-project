@@ -1,0 +1,17 @@
+1481680568798	Delete element
+1481681578309	Rename type 'BuiDuApiProcess'
+1481696551293	Delete elements
+1481696682408	Rename resource 'LdpaZhhaoyeMapper.xml'
+1481696695626	Delete element
+1481696736448	Rename resource 'LdpaMtxfjlbMapper.xml'
+1481696800300	Delete element
+1481696889470	Delete element
+1481696928740	Delete element
+1481697051962	Rename type 'LdpaMtxfjlServiceDao'
+1481697138274	Rename type 'LdpaMtxfjlServiceImpl'
+1481697506848	Rename type 'LdpaZhhaoyeServiceDao'
+1481697546728	Rename type 'LdpaZhhaoyeServiceImpl'
+1481697679124	Rename type 'LdpaZhhaoyeDataProcess'
+1481697924701	Delete element
+1481699308697	Rename type 'LdpaMtxfjlController'
+1481699336370	Rename type 'LdpaZhhaoyeController'

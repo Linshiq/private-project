@@ -1,0 +1,56 @@
+h4{
+	font-family: Microsoft YaHei;
+}
+.border{
+    border-style: groove; 
+    border-bottom-width: 0.5em; 
+    }
+.left{
+    float: top-left;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    }
+.right{
+    float: top-right;
+    border: 0;
+    margin: 0;
+    padding: 0;
+	}	
+.btn{
+    width: 10% ;
+  	height: 5% auto;
+  	background: #617798;
+  	color: #FFFFFF;
+  	font-size: 1em; 
+  	-moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+	}
+.btn_td{
+    width: 4em; 
+    height: 2em;
+	}
+table,th,td{
+	border: 1px solid blue;
+	background: white;
+	}
+#customers
+  {
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  width:100%;
+  /*border-collapse:collapse;*/
+  border-collapse: separate;
+  border-spacing: 0.1em;
+  }
+#no{
+	color: #FF0000;
+	}
+#yes{
+    color: #00CD00;
+	}
+#wait{
+	color: #1C86EE;
+    }
+#cancel{
+  color: #969696;
+  }

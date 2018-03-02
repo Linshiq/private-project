@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lsq.db.dao.PersonDtailsMapper" >
+  <resultMap id="BaseResultMap" type="com.lsq.db.model.PersonDtails" >
+    <result column="detail_id" property="detailId" jdbcType="VARCHAR" />
+    <result column="record_date" property="recordDate" jdbcType="VARCHAR" />
+    <result column="relatif_time" property="relatifTime" jdbcType="VARCHAR" />
+    <result column="detail_type" property="detailType" jdbcType="VARCHAR" />
+    <result column="detail_remark" property="detailRemark" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+		detail_id, record_date, relatif_time, detail_remark, detail_type, amount
+	</sql>
+	<sql id="Blob_Column_List">
+		REMARK
+	</sql>
+	
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from person_details
+		where detail_id = #{id,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByDate" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from person_details
+		where record_date = #{date,jdbcType=VARCHAR}
+	</select>
+
+
+	<select id="selectConsumerInfo" resultMap="BaseResultMap"
+		parameterType="com.lsq.db.type.ConsumerDetailsType">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from person_details
+		
+		<where>
+			<if test="date!=null and date!=''">
+				<![CDATA[ and record_date like #{date,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="consumptionType!=null and consumptionType!=''">
+				<![CDATA[
+					and detail_type = #{consumptionType,jdbcType=VARCHAR}
+				]]>
+			</if>
+			and detail_type != ''
+		</where>
+		order by record_date
+	</select>
+
+	<select id="selectConsumerPropInfo" resultMap="BaseResultMap"
+		parameterType="com.lsq.db.type.ConsumerDetailsType">
+
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from person_details
+		<where>
+			<if test="minDate!=null and minDate!=''">
+				<![CDATA[ and record_date >= #{minDate} ]]>
+			</if>
+			<if test="maxDate!=null and maxDate!=''">
+				<![CDATA[
+					and record_date <= #{maxDate}
+				]]>
+			</if>
+		</where>
+		order by detail_type
+	</select>
+
+	<select id="selectConsumptionType" resultType="java.lang.String"
+		parameterType="java.lang.String">
+		select distinct detail_type
+		from person_details
+		order by detail_type
+	</select>
+  
+  
+  
+  <insert id="insert" parameterType="com.lsq.db.model.PersonDtails" >
+    insert into person_details (detail_id, record_date, relatif_time, 
+      detail_type, detail_remark, amount, 
+      remark)
+    values (#{detailId,jdbcType=VARCHAR}, #{recordDate,jdbcType=VARCHAR}, #{relatifTime,jdbcType=VARCHAR}, 
+      #{detailType,jdbcType=VARCHAR}, #{detailRemark,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lsq.db.model.PersonDtails" >
+    insert into person_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        detail_id,
+      </if>
+      <if test="recordDate != null" >
+        record_date,
+      </if>
+      <if test="relatifTime != null" >
+        relatif_time,
+      </if>
+      <if test="detailType != null" >
+        detail_type,
+      </if>
+      <if test="detailRemark != null" >
+        detail_remark,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        #{detailId,jdbcType=VARCHAR},
+      </if>
+      <if test="recordDate != null" >
+        #{recordDate,jdbcType=VARCHAR},
+      </if>
+      <if test="relatifTime != null" >
+        #{relatifTime,jdbcType=VARCHAR},
+      </if>
+      <if test="detailType != null" >
+        #{detailType,jdbcType=VARCHAR},
+      </if>
+      <if test="detailRemark != null" >
+        #{detailRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

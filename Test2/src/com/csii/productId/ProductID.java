@@ -1,0 +1,80 @@
+package com.csii.productId;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+/** 
+* @author  Linshiq: 
+* @date 创建时间：2017年6月8日 下午7:43:25 
+* @version 1.0 
+* @parameter  
+* @since  
+* @return  
+*/
+/**
+ * <p>
+ * 文件功能说明：
+ * 
+ * </p>
+ * 
+ * @Author linshiqin
+ *         <p>
+ *         <li>2017年6月8日-下午7:43:25</li>
+ *         <li>修改记录</li>
+ *         <li>-----------------------------------------------------------</li>
+ *         <li>标记：修订内容</li>
+ *         <li>linshiqin：创建注释模板</li>
+ *         <li>-----------------------------------------------------------</li>
+ *         </p>
+ */
+public class ProductID {
+
+	public static void main(String[] args) {
+
+		/*
+		 * int year = currTime.getYear();//年
+		 * 
+		 * int month = currTime.getMonth()+1;//月
+		 * 
+		 * int week = currTime.getDay(); //星期几
+		 * 
+		 * int day = currTime.getDate();//日
+		 * 
+		 * String curTime = formatter.format(currTime);
+		 */
+
+		String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", };
+
+		Calendar cal = Calendar.getInstance();
+
+		int day = cal.get(Calendar.DATE);
+		int month = cal.get(Calendar.MONTH);//
+		int year = cal.get(Calendar.YEAR);
+		int dow = cal.get(Calendar.DAY_OF_WEEK);
+		int dom = cal.get(Calendar.DAY_OF_MONTH);
+		int doy = cal.get(Calendar.DAY_OF_YEAR);
+
+		System.out.println("result:" + months[month]);
+
+		java.util.Date currTime = new java.util.Date();
+
+		System.out.print("Format To times:" + currTime.getTime());
+
+		for (int i = 0; i < 113; i++) {
+
+			StringBuffer id = new StringBuffer();
+
+			id.append(months[month-1]);// 连接开头ID
+			id.append(year);// 连接年
+			id.append((month + 1 >= 10 ? month + 1 : "0" + (month + 1)));// 连接月
+			id.append((currTime.getDate() >= 10 ? currTime.getDate() : "0" + currTime.getDate()));// 连接日
+			id.append(currTime.getTime());// 连接时间戳
+			id.append(i);
+			
+			System.out.println(id);
+
+		}
+	}
+}

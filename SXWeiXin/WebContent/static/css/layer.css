@@ -1,0 +1,58 @@
+/*  layer css start       */
+.layui-layer-msg .layui-layer-padding {
+    padding: 13px  10px 15px 60px !important;
+}
+
+.layui-layer-msg .layui-layer-padding .layui-layer-ico {
+    top: 10px !important;
+}
+.layermchild {
+    background: rgba(0, 0, 0, 0.6);
+    width: 280px;
+}
+.layermchild h5 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.layermcont {
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 15px;
+}
+.layermchild .layermbtn {
+    border-top: 1px solid #e0e0e0;
+    margin-top: 5px;
+}
+.layermbtn span {
+    width: 50%;
+    height:35px;
+    padding-top: 7px;
+    background-color: unset !important;
+    display: inline-block;
+    text-align: center;
+}
+.layermbtn:before{
+    display: none;
+}
+/*.layermbtn span:first-child{
+    border-right: 1px solid #e0e0e0;
+}*/
+.layermbox{
+    top: 200px;
+    position: fixed;
+    z-index: 10010;
+    width: 100%;
+}
+.layermbox .layermmain .section .layermchild {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 2px;
+    margin: 0px auto;
+    width: 240px; color:#fff;
+    border:none;
+}
+
+.layermend{
+    top: 6px;
+}

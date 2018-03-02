@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lsq.db.dao.DpConsumerDetailsMapper">
+	<resultMap id="BaseResultMap" type="com.lsq.db.model.DpConsumerDetails">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="DATE" property="date" jdbcType="DATE" />
+		<result column="TIME" property="time" jdbcType="VARCHAR" />
+		<result column="CONSUMPTION_REMARK" property="consumptionRemark"
+			jdbcType="VARCHAR" />
+		<result column="CONSUMPTION_TYPE" property="consumptionType"
+			jdbcType="VARCHAR" />
+		<result column="EXPENDITURE" property="expenditure" jdbcType="REAL" />
+		<result column="INCOME" property="income" jdbcType="REAL" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.lsq.db.model.DpConsumerDetails"
+		extends="BaseResultMap">
+		<result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+	</resultMap>
+
+
+
+	<sql id="Base_Column_List">
+		ID, DATE, TIME, CONSUMPTION_REMARK, CONSUMPTION_TYPE, EXPENDITURE, INCOME
+	</sql>
+	<sql id="Blob_Column_List">
+		REMARK
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from dp_consumer_details
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByDate" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from dp_consumer_details
+		where DATE = #{date,jdbcType=VARCHAR}
+	</select>
+
+
+	<select id="selectConsumerInfo" resultMap="ResultMapWithBLOBs"
+		parameterType="com.lsq.db.type.ConsumerDetailsType">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from dp_consumer_details
+		where DATE like #{date,jdbcType=VARCHAR}
+		and consumption_type = #{consumptionType,jdbcType=VARCHAR}
+		order by date
+	</select>
+
+	<select id="selectConsumerPropInfo" resultMap="ResultMapWithBLOBs"
+		parameterType="com.lsq.db.type.ConsumerDetailsType">
+
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from dp_consumer_details
+		<where>
+			<if test="minDate!=null and minDate!=''">
+				<![CDATA[ and date >= #{minDate} ]]>
+			</if>
+			<if test="maxDate!=null and maxDate!=''">
+				<![CDATA[
+					and date <= #{maxDate}
+				]]>
+			</if>
+		</where>
+		order by consumption_type
+	</select>
+
+	<select id="selectConsumptionType" resultType="java.lang.String"
+		parameterType="java.lang.String">
+		select distinct consumption_type
+		from dp_consumer_details
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from dp_consumer_details
+		where ID = #{id,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.lsq.db.model.DpConsumerDetails">
+		insert into dp_consumer_details (ID, DATE, TIME,
+		CONSUMPTION_REMARK, CONSUMPTION_TYPE, EXPENDITURE,
+		INCOME, REMARK)
+		values (#{id,jdbcType=VARCHAR}, #{date,jdbcType=DATE},
+		#{time,jdbcType=VARCHAR},
+		#{consumptionRemark,jdbcType=VARCHAR}, #{consumptionType,jdbcType=VARCHAR}, #{expenditure,jdbcType=REAL},
+		#{income,jdbcType=REAL}, #{remark,jdbcType=LONGVARCHAR})
+	</insert>
+
+
+
+	<insert id="insertSelective" parameterType="com.lsq.db.model.DpConsumerDetails">
+		insert into dp_consumer_details
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="date != null">
+				DATE,
+			</if>
+			<if test="time != null">
+				TIME,
+			</if>
+			<if test="consumptionRemark != null">
+				CONSUMPTION_REMARK,
+			</if>
+			<if test="consumptionType != null">
+				CONSUMPTION_TYPE,
+			</if>
+			<if test="expenditure != null">
+				EXPENDITURE,
+			</if>
+			<if test="income != null">
+				INCOME,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="date != null">
+				#{date,jdbcType=DATE},
+			</if>
+			<if test="time != null">
+				#{time,jdbcType=VARCHAR},
+			</if>
+			<if test="consumptionRemark != null">
+				#{consumptionRemark,jdbcType=VARCHAR},
+			</if>
+			<if test="consumptionType != null">
+				#{consumptionType,jdbcType=VARCHAR},
+			</if>
+			<if test="expenditure != null">
+				#{expenditure,jdbcType=REAL},
+			</if>
+			<if test="income != null">
+				#{income,jdbcType=REAL},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.lsq.db.model.DpConsumerDetails">
+		update dp_consumer_details
+		<set>
+			<if test="date != null">
+				DATE = #{date,jdbcType=DATE},
+			</if>
+			<if test="time != null">
+				TIME = #{time,jdbcType=VARCHAR},
+			</if>
+			<if test="consumptionRemark != null">
+				CONSUMPTION_REMARK = #{consumptionRemark,jdbcType=VARCHAR},
+			</if>
+			<if test="consumptionType != null">
+				CONSUMPTION_TYPE = #{consumptionType,jdbcType=VARCHAR},
+			</if>
+			<if test="expenditure != null">
+				EXPENDITURE = #{expenditure,jdbcType=REAL},
+			</if>
+			<if test="income != null">
+				INCOME = #{income,jdbcType=REAL},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lsq.db.model.DpConsumerDetails">
+		update dp_consumer_details
+		set DATE = #{date,jdbcType=DATE},
+		TIME = #{time,jdbcType=VARCHAR},
+		CONSUMPTION_REMARK = #{consumptionRemark,jdbcType=VARCHAR},
+		CONSUMPTION_TYPE = #{consumptionType,jdbcType=VARCHAR},
+		EXPENDITURE = #{expenditure,jdbcType=REAL},
+		INCOME = #{income,jdbcType=REAL},
+		REMARK = #{remark,jdbcType=LONGVARCHAR}
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.lsq.db.model.DpConsumerDetails">
+		update dp_consumer_details
+		set DATE = #{date,jdbcType=DATE},
+		TIME = #{time,jdbcType=VARCHAR},
+		CONSUMPTION_REMARK = #{consumptionRemark,jdbcType=VARCHAR},
+		CONSUMPTION_TYPE = #{consumptionType,jdbcType=VARCHAR},
+		EXPENDITURE = #{expenditure,jdbcType=REAL},
+		INCOME = #{income,jdbcType=REAL}
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+</mapper>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;baobiao&apos;&#x0D;&#x0A;- Original project: &apos;baobiao&apos;&#x0D;&#x0A;- Original element: &apos;baobiao/src/sy&apos;&#x0D;&#x0A;- Delete subpackages" description="Delete element" element1="/src&lt;sy.service" element2="/src&lt;sy.model" element3="/src&lt;sy.mapping" element4="/src&lt;sy.dao" element5="/src&lt;sy.controller" element6="/src&lt;sy" elements="6" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1477374957408" subPackages="true" version="1.0"/>
+</session>

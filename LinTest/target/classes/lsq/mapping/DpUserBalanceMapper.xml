@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lsq.dao.DpUserBalanceMapper" >
+  <resultMap id="BaseResultMap" type="lsq.model.DpUserBalance" >
+    <id column="date" property="date" jdbcType="DATE" />
+    <result column="total_consumption" property="totalConsumption" jdbcType="REAL" />
+    <result column="total_income" property="totalIncome" jdbcType="REAL" />
+    <result column="balance" property="balance" jdbcType="REAL" />
+    <result column=" registrar" property="registrar" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="lsq.model.DpUserBalance" extends="BaseResultMap" >
+    <result column=" remark" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    date, total_consumption, total_income, balance, " registrar"
+  </sql>
+  <sql id="Blob_Column_List" >
+    " remark"
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.util.Date" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dp_user_balance
+    where date = #{date,jdbcType=DATE}
+  </select>
+    <select id="selectAllInfo" resultMap="ResultMapWithBLOBs" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dp_user_balance ORDER BY DATE
+  </select>
+  <select id="selectByMonth" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dp_user_balance
+    where DATE like #{date,jdbcType=VARCHAR} ORDER BY DATE
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.util.Date" >
+    delete from dp_user_balance
+    where date = #{date,jdbcType=DATE}
+  </delete>
+  <insert id="insert" parameterType="lsq.model.DpUserBalance" >
+    insert into dp_user_balance (date, total_consumption, total_income, 
+      balance, " registrar", " remark"
+      )
+    values (#{date,jdbcType=DATE}, #{totalConsumption,jdbcType=REAL}, #{totalIncome,jdbcType=REAL}, 
+      #{balance,jdbcType=REAL}, #{registrar,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lsq.model.DpUserBalance" >
+    insert into dp_user_balance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="totalConsumption != null" >
+        total_consumption,
+      </if>
+      <if test="totalIncome != null" >
+        total_income,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="registrar != null" >
+        registrar,
+      </if>
+      <if test="remark != null" >
+        remark
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="totalConsumption != null" >
+        #{totalConsumption,jdbcType=REAL},
+      </if>
+      <if test="totalIncome != null" >
+        #{totalIncome,jdbcType=REAL},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=REAL},
+      </if>
+      <if test="registrar != null" >
+        #{registrar,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lsq.model.DpUserBalance" >
+    update dp_user_balance
+    <set >
+      <if test="totalConsumption != null" >
+        total_consumption = #{totalConsumption,jdbcType=REAL},
+      </if>
+      <if test="totalIncome != null" >
+        total_income = #{totalIncome,jdbcType=REAL},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=REAL},
+      </if>
+      <if test="registrar != null" >
+        " registrar" = #{registrar,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        " remark" = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where date = #{date,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="lsq.model.DpUserBalance" >
+    update dp_user_balance
+    set total_consumption = #{totalConsumption,jdbcType=REAL},
+      total_income = #{totalIncome,jdbcType=REAL},
+      balance = #{balance,jdbcType=REAL},
+      " registrar" = #{registrar,jdbcType=VARCHAR},
+      " remark" = #{remark,jdbcType=LONGVARCHAR}
+    where date = #{date,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lsq.model.DpUserBalance" >
+    update dp_user_balance
+    set total_consumption = #{totalConsumption,jdbcType=REAL},
+      total_income = #{totalIncome,jdbcType=REAL},
+      balance = #{balance,jdbcType=REAL},
+      " registrar" = #{registrar,jdbcType=VARCHAR}
+    where date = #{date,jdbcType=DATE}
+  </update>
+</mapper>

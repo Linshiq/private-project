@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+.error{width:90px;height:50px;margin:0 auto;background:#EE3B3B}
+
+.table-bordered{
+    border-style: groove; 
+    border-bottom-width: 0.5em; 
+    border-collapse:collaspe
+    }

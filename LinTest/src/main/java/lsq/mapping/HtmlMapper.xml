@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lsq.dao.HtmlMapper" >
+  <resultMap id="BaseResultMap" type="lsq.model.Html" >
+    <id column="htmlId" property="htmlid" jdbcType="VARCHAR" />
+    <result column="htmldsc" property="htmldsc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    htmlId, htmldsc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from thtml
+    where htmlId = #{htmlid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from thtml
+    where htmlId = #{htmlid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lsq.model.Html" >
+    insert into thtml (htmlId, htmldsc)
+    values (#{htmlid,jdbcType=VARCHAR}, #{htmldsc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lsq.model.Html" >
+    insert into thtml
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="htmlid != null" >
+        htmlId,
+      </if>
+      <if test="htmldsc != null" >
+        htmldsc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="htmlid != null" >
+        #{htmlid,jdbcType=VARCHAR},
+      </if>
+      <if test="htmldsc != null" >
+        #{htmldsc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lsq.model.Html" >
+    update thtml
+    <set >
+      <if test="htmldsc != null" >
+        htmldsc = #{htmldsc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where htmlId = #{htmlid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lsq.model.Html" >
+    update thtml
+    set htmldsc = #{htmldsc,jdbcType=VARCHAR}
+    where htmlId = #{htmlid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="selectConsumerPropInfo" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="selectConsumerPropInfo"/>
+			<item value="selectByPrimaryKey"/>
+			<item value="type"/>
+			<item value="annualConsumptionReport"/>
+			<item value="port"/>
+			<item value="file"/>
+			<item value="totalPages)}"/>
+			<item value="pageInfo.getPages() - pageInfo.getPageNum()"/>
+		</list>
+		<list key="replacehistory">
+			<item value="com.lsq.db.model."/>
+			<item value="com.lsq.dp.model."/>
+			<item value="com.lsq.dp.model.PersonalAccount"/>
+			<item value="com.lsq.db.model.User"/>
+			<item value="com.lsq.db."/>
+			<item value="map.put"/>
+			<item value="com.lsq.db.model.DpUserInfo"/>
+			<item value="com.lsq.db.model.DpUserBalance"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="325" key="DIALOG_WIDTH"/>
+		<item value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI" key="DIALOG_FONT_NAME"/>
+		<item value="445" key="DIALOG_HEIGHT"/>
+		<item value="231" key="DIALOG_Y_ORIGIN"/>
+		<item value="9" key="DIALOG_X_ORIGIN"/>
+	</section>
+</section>

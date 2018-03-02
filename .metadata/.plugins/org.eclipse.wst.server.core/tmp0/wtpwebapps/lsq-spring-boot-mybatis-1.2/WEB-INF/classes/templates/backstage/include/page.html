@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<style type="text/css">
+    .lii{height: 34px;line-height: 34px;padding: 0 5px}
+    .liinput{display: inline-block;width: 34px;height: 34px}
+</style>
+</head>
+<body>
+	<footer th:fragment="page">
+
+		<nav  class="text-center">
+			<ul class="pagination " >
+				<li><a href="">&laquo;</a></li>
+
+				<li><a th:if="${not isFirstPage}"
+					th:href="@{${'/back/year_query/query'}(pageNum=${pageNum-1},pageSize=${pageSize},year=${year},consumptionType=${pageConsumptionType})}">上一页</a>
+					<a th:if="${isFirstPagee}" href="javascript:void(0);">上一页</a></li>
+
+				
+				<li th:each="pageNo : ${#numbers.sequence(startPages, endPages)}" >
+					<a th:if="${pageNum eq pageNo}" href="javascript:void(0);" style="background-color:#8B5A00" > 
+						<span th:text="${pageNo}"></span>
+					</a> 
+					<a th:if="${not (pageNum eq pageNo)}"
+						th:href="@{${'/back/year_query/query'}(pageNum=${pageNo},size=${pageSize},year=${year},consumptionType=${pageConsumptionType})}">
+							<span th:text="${pageNo}"></span>
+					</a>
+				</li>
+				
+				<li><a th:if="${not isLastPage}"
+					th:href="@{${'/back/year_query/query'}(pageNum=${pageNum+1},size=${pageSize},year=${year},consumptionType=${pageConsumptionType})}">下一页</a>
+					<a th:if="${isLastPage}" href="javascript:void(0);">下一页</a></li>
+
+				<li><a href="#">&raquo;</a></li>
+				<li><samp style="height: 34px;line-height: 34px;padding: 0 5px" th:text="'总页数: ' + ${totalPages}">总页数: 64</samp></li>
+	            <li><samp style="height: 34px;line-height: 34px;padding: 0 5px">|</samp></li>
+	            <li>
+	                <samp style="height: 34px;line-height: 34px;padding: 0 5px">
+	                	到第
+	                	<input type="text" class="form-control" style="display: inline-block;width: 34px;height: 34px"/>
+	                	页
+	                </samp>
+	                <samp style="height: 34px;line-height: 34px;padding: 0 5px"><button class="btn btn-primary">确定</button></samp>
+	            </li>
+				<!-- <li><p style="line-height" th:text="'总页数: ' + ${totalPages}"></p></li> -->
+				<!-- <li>
+					<form class="form-inline">
+					  <div class="form-group">
+					    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+					    <div class="input-group">
+					      <div class="input-group-addon" th:text="'总页数: ' + ${totalPages} + '页    到'"></div>
+					      <input type="text" class="form-control" id="exampleInputAmount" placeholder="page"/>
+					      <div class="input-group-addon">页</div>
+					    </div>
+					  </div>
+					  <button type="submit" class="btn btn-primary">Transfer cash</button>
+					</form>
+				</li> -->
+			</ul>
+		</nav>
+	</footer>
+</body>
+
+</html>

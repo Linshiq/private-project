@@ -1,0 +1,16 @@
+127.0.0.1 - - [18/Feb/2017:13:19:23 +0800] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:27 +0800] "GET /LinTest HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:27 +0800] "GET /LinTest/ HTTP/1.1" 200 57
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:27 +0800] "GET /favicon.ico HTTP/1.1" 404 1016
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/index HTTP/1.1" 200 10998
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/static/css/carousel.css HTTP/1.1" 200 2538
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/static/js/jquery.min.js HTTP/1.1" 200 95786
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/static/css/bootstrap.min.css HTTP/1.1" 200 130404
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/static/js/bootstrap.min.js HTTP/1.1" 200 34665
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/static/js/ie-emulation-modes-warning.js HTTP/1.1" 200 2179
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/static/js/docs.min.js HTTP/1.1" 200 43107
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/static/img/DVA.jpg HTTP/1.1" 200 64839
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/static/img/%E5%85%89%E5%A4%B4.jpg HTTP/1.1" 200 57437
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/static/img/%E4%B8%AA%E4%BA%BA%E7%9B%B8%E7%89%87.jpg HTTP/1.1" 200 26043
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /LinTest/static/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 200 23320
+0:0:0:0:0:0:0:1 - - [18/Feb/2017:13:23:32 +0800] "GET /assets/flash/ZeroClipboard.swf?noCache=1487395412393 HTTP/1.1" 404 1054

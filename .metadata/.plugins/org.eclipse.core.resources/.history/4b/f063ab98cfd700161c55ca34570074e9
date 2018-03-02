@@ -1,0 +1,59 @@
+package com.lsq.medium;
+/** 
+* @author  Linshiq: 
+* @date 创建时间：2017年1月11日 下午1:57:15 
+* @version 1.0 
+* @parameter  
+* @since  
+* @return  
+*/
+/**
+ * <p>
+ * 文件功能说明：
+ *       给k个字符串，求出他们的最长公共前缀(LCP)
+ *       样例
+ *       	在 "ABCD" "ABEF" 和 "ACEF" 中,  LCP 为 "A"
+ *       	在 "ABCDEFG", "ABCEFG", "ABCEFA" 中, LCP 为 "ABC"			
+ * </p>
+ * 
+ * @Author linshiqin
+ *         <p>
+ *         <li>2017年1月11日-下午1:57:15</li>
+ *         <li>修改记录</li>
+ *         <li>-----------------------------------------------------------</li>
+ *         <li>标记：修订内容</li>
+ *         <li>linshiqin：创建注释模板</li>
+ *         <li>-----------------------------------------------------------</li>
+ *         </p>
+ */
+public class LongestPublicPrefix {
+	
+	private String str = "";
+	/**
+     * @param strs: A list of strings
+     * @return: The longest common prefix
+     */
+    public static String longestCommonPrefix(String[] strs) {
+        // write your code here
+    	String str = "";
+    	
+    	if(strs.length > 1){
+    		
+    		compare(strs[0], 1, strs);
+    		
+    	}else{
+    		
+    		return strs[0];
+    	}
+    	
+    	return str;
+    }
+    
+    public static void compare(String str1,int next,String[] strs){
+    	
+    	for(int i = 0;i<str1.length();i++){
+    		
+    		if()
+    	}
+    }
+}

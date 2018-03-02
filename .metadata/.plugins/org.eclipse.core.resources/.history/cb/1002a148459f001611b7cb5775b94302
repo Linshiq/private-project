@@ -1,0 +1,70 @@
+/**
+ * 
+ */package lsq.controller;/** 
+* @author  Linshiq: 
+* @date 创建时间：2016年10月17日 下午6:42:52 
+* @version 1.0 
+* @parameter  
+* @since  
+* @return  
+*/
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lsq.service.dao.HtmlServiceDao;
+
+/**
+* <p>
+* 文件功能说明：
+*       			
+* </p>
+* 
+* @Author linshiqin
+*         <p>
+*         <li>2016年10月17日-下午6:42:52</li>
+*         <li>修改记录</li>
+*         <li>-----------------------------------------------------------</li>
+*         <li>标记：修订内容</li>
+*         <li>linshiqin：创建注释模板</li>
+*         <li>-----------------------------------------------------------</li>
+*         </p>
+*/
+ @Controller
+ @RequestMapping("/")
+ public class AllController {
+
+	Logger logger = Logger.getLogger(AllController.class);
+ 	HtmlServiceDao htmlDao;
+ 	
+ 	@RequestMapping("/index")
+ 	public String getIndex(Model model){  //主页
+
+ 		return "/WEB-INF/jsp/index2";
+ 	}
+ 	@RequestMapping("/ditu")
+ 	public String getLocation(Model model){
+
+ 		return "/WEB-INF/jsp/ditu";
+ 	}
+ 	@RequestMapping("/test")
+ 	public String getTest(Model model){
+
+ 		
+ 		return "/WEB-INF/jsp/annual_report";
+ 	}
+ 	@RequestMapping("/login")
+ 	public String getLogin(Model model){
+ 		
+ 		return "/WEB-INF/jsp/login";
+ 	}
+// 	@RequestMapping("/*")
+// 	public String getJsp(Model model){
+// 		
+// 		return "/WEB-INF/jsp/404";
+// 	}
+
+ }
+

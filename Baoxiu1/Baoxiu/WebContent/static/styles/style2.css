@@ -1,0 +1,59 @@
+/* CSS Document */
+
+h2{
+	font-family: "微软简中圆";
+	float: left;
+}
+p{
+	text-align: left;
+}
+label{
+	text-align: center;
+}
+span{
+	padding:10em;
+	maggrin:10em;
+	text-align: center;
+	font-family: "微软简中圆";
+	font-size:10em;
+}
+button{
+	width: 30% ;
+  	height: 30% ;
+  	font-size: 3em; 
+}
+table.imagetable {
+	font-family: verdana,arial,sans-serif;
+	font-size:1em;
+	color:#333333;
+	border-width: 0.1em;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+table.imagetable th {
+	background:#b5cfd2 url("./cell-blue.jpg");
+	border-width: 0.1em;
+	padding: 1em;
+	border-style: solid;
+	border-color: #999999;
+}
+table.imagetable td {
+	background:#dcddc0 url("./cell-grey.jpg");
+	border-width: 0.1em;
+	padding: 1em;
+	border-style: solid;
+	border-color: #999999;
+}
+.btn{
+	width: 30% ;
+  	height: 20% ;
+  	background: #B9D3EE;
+  	color: #FFFFFF;
+  	font-size: 1em; 
+  	-moz-border-radius: 1em; 
+    -webkit-border-radius: 1em; 
+    float: left;
+}
+.left{
+	float: left;
+}

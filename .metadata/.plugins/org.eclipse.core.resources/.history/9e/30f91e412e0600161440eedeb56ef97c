@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>SXWeiXin</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>CoreServlet</servlet-name>
+    <servlet-class>com.core.CoreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoreServlet</servlet-name>
+    <url-pattern>/CoreServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>BJBbaoxiu</servlet-name>
+    <servlet-class>menu_center.bjb_baoxiu.BJBBaoXiuServelet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BJBbaoxiu</servlet-name>
+    <url-pattern>/Baoxiu</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Test</servlet-name>
+    <servlet-class>test.baoxiuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Test</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  
+<!-- 配置log4j --> 
+ <context-param> 
+ <param-name>webAppRootKey</param-name> 
+ <param-value>com.hsinghsu.testSSH.webapp.root</param-value> 
+ </context-param> 
+ <context-param> 
+ <param-name>log4jConfigLocation</param-name> 
+ <param-value>/res/log4j.properties</param-value> 
+ </context-param> 
+ <context-param> 
+ <param-name>log4jRefreshInterval</param-name> 
+ <param-value>600000</param-value> 
+ </context-param>
+</web-app>

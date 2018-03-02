@@ -1,0 +1,49 @@
+package lsq.test;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import lsq.model.LdpaMtxfjlb;
+import lsq.service.dao.ArticleServiceDao;
+import lsq.service.dao.LdpaMtxfjlServiceDao;
+import lsq.service.dao.UserServiceDao;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:spring.xml", "classpath*:spring-mybatis.xml" })
+public class TestMybatis {
+	UserServiceDao usd;
+    ArticleServiceDao ar;
+    LdpaMtxfjlServiceDao ldpaMtxfjlService;
+    
+    
+	public LdpaMtxfjlServiceDao getLdpaMtxfjlService() {
+		return ldpaMtxfjlService;
+	}
+
+	@Autowired
+	public void setLdpaMtxfjlService(LdpaMtxfjlServiceDao ldpaMtxfjlService) {
+		this.ldpaMtxfjlService = ldpaMtxfjlService;
+	}
+
+
+
+
+	@Test
+	public void test() {
+
+//		User u = usd.getUserById("1");
+//		System.out.println(u.getName());
+		List<LdpaMtxfjlb> ldpaMtxfjlList = ldpaMtxfjlService.selectAllInfo();
+		for(LdpaMtxfjlb l:ldpaMtxfjlList)
+			
+		//LdpaMtxfjlb l = ldpaMtxfjlService.selectByPrimaryKey("A2016081308054000");
+		//for(LdpaMtxfjlb a:l)
+			System.out.println(l.getId());
+		
+	}
+}

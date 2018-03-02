@@ -1,0 +1,109 @@
+package com.lsq.medium;
+/** 
+* @author  Linshiq: 
+* @date 创建时间：2017年1月9日 下午8:02:28 
+* @version 1.0 
+* @parameter  
+* @since  
+* @return  
+*/
+/**
+ * <p>
+ * 文件功能说明：
+ *     给出两个字符串，找到最长公共子串，并返回其长度。
+ *     
+ *      注意事项
+
+			子串的字符应该连续的出现在原字符串中，这与子序列有所不同。  		
+			
+		样例
+			给出A=“ABCD”，B=“CBCE”，返回 2
+ * </p>
+ * 
+ * @Author linshiqin
+ *         <p>
+ *         <li>2017年1月9日-下午8:02:28</li>
+ *         <li>修改记录</li>
+ *         <li>-----------------------------------------------------------</li>
+ *         <li>标记：修订内容</li>
+ *         <li>linshiqin：创建注释模板</li>
+ *         <li>-----------------------------------------------------------</li>
+ *         </p>
+ */
+public class LongestCommonSubstring {
+	private static int index = -1;
+	
+	private static int count = 0;
+	/**
+     * @param A, B: Two string.
+     * @return: the length of the longest common substring.
+     */
+    public static int longestCommonSubstring(String A, String B) {
+        // write your code here    	
+//    	char[] c1 = A.toCharArray();
+//    	char[] c2 = B.toCharArray();
+    	//System.out.println("c1 " + c1.length + " c2 "+ c2.length);
+    	if(A.length() == 0 || B.length() == 0)
+    		return 0;
+    	
+    	if(A.length() < B.length()){
+    		oneToOne(B, A, 0, B.length());
+    	}else{
+    		oneToOne(A, B, 0, A.length());
+    	}
+    	System.out.println(count);
+    	if(count > index){
+			index = count;
+		}
+    	
+    	return index;
+   	
+    }
+    
+    private static int oneToOne(String A, String B, int c2Index ,int len){
+    	
+    	int inIndex = 0;
+    	
+    	String s = "";
+    	
+    	System.out.println(A.length() + " " + B.length() + " " + B);
+    	
+    	for(int i = 0;i<len;i++){
+    		
+    		inIndex = i;
+    		
+    		for(int j = c2Index ; j < B.length() ; j++){
+	    		if(i+c2Index == B.length())
+	    			return i+c2Index;
+	    		
+	    		if(inIndex < len && A.charAt(inIndex)==B.charAt(j)){
+	    			count++;
+	    			inIndex++;
+	    			System.out.print(B.charAt(j));
+	    			s = A.charAt(inIndex) + "";
+	    		}else if(count!=0){
+	    			if(s.length()!=0)
+	    				System.out.println();
+	    			//System.out.println("count " + count);
+	    			if(count > index){
+	    				index = count;
+	    			}
+	    			count = 0; 	
+	    			
+	    			s = "";
+	    		}else{
+	    			inIndex++;
+	    		}
+    		}		
+    		if(count == B.length())
+    	        return count;
+    	}
+    	
+    	return -1;
+    }
+    
+    public static void main(String[] args) {
+		System.out.println(" end:"+LongestCommonSubstring.longestCommonSubstring("adfanadsnf;andvadsjfafjdlsfnaldjfi*odiasjfasdlnfasldgao;inadfjnals;dfjasdl;jfa;dsjfa;sdnfsd;afhwery894yra7f78asfas8fy43rhaisuey34hiuy^%(9afysdfhaksdhfsdkjfhsdhfakldhfsdkf*h", 
+																					"dafdnf**"));
+	}
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lsq.dao.LevelMapper" >
+  <resultMap id="BaseResultMap" type="lsq.model.Level" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="active_day" property="activeDay" jdbcType="BIGINT" />
+    <result column="all_day" property="allDay" jdbcType="BIGINT" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="upgrade" property="upgrade" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, active_day, all_day, level, upgrade, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tlevel
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tlevel
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lsq.model.Level" >
+    insert into tlevel (id, active_day, all_day, 
+      level, upgrade, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{activeDay,jdbcType=BIGINT}, #{allDay,jdbcType=BIGINT}, 
+      #{level,jdbcType=INTEGER}, #{upgrade,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lsq.model.Level" >
+    insert into tlevel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="activeDay != null" >
+        active_day,
+      </if>
+      <if test="allDay != null" >
+        all_day,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="upgrade != null" >
+        upgrade,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="activeDay != null" >
+        #{activeDay,jdbcType=BIGINT},
+      </if>
+      <if test="allDay != null" >
+        #{allDay,jdbcType=BIGINT},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="upgrade != null" >
+        #{upgrade,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lsq.model.Level" >
+    update tlevel
+    <set >
+      <if test="activeDay != null" >
+        active_day = #{activeDay,jdbcType=BIGINT},
+      </if>
+      <if test="allDay != null" >
+        all_day = #{allDay,jdbcType=BIGINT},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="upgrade != null" >
+        upgrade = #{upgrade,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lsq.model.Level" >
+    update tlevel
+    set active_day = #{activeDay,jdbcType=BIGINT},
+      all_day = #{allDay,jdbcType=BIGINT},
+      level = #{level,jdbcType=INTEGER},
+      upgrade = #{upgrade,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

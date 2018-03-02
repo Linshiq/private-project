@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;LinTest/src/main/webapp/WEB-INF/jsp/report/month.jsp&apos; to &apos;month_report.jsp&apos;" description="Rename resource &apos;month.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/WEB-INF/jsp/report/month.jsp" name="month_report.jsp" stamp="1477538775495" updateReferences="true"/>
+</session>

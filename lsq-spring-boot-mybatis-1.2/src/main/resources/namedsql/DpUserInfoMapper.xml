@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lsq.db.dao.DpUserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lsq.db.model.DpUserInfo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <id column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="LOGIN_PASSWORD" property="loginPassword" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="LOGIN_IP" property="loginIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, LOGIN_NAME, LOGIN_PASSWORD, STATE, LOGIN_IP
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.lsq.db.model.DpUserInfo" >
+    select 
+    <include refid="Base_Column_List" />
+    from dp_user_info
+    where ID = #{id,jdbcType=VARCHAR}
+      and LOGIN_NAME = #{loginName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.lsq.db.model.DpUserInfo" >
+    delete from dp_user_info
+    where ID = #{id,jdbcType=VARCHAR}
+      and LOGIN_NAME = #{loginName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lsq.db.model.DpUserInfo" >
+    insert into dp_user_info (ID, LOGIN_NAME, LOGIN_PASSWORD, 
+      STATE, LOGIN_IP)
+    values (#{id,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{loginIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lsq.db.model.DpUserInfo" >
+    insert into dp_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="loginName != null" >
+        LOGIN_NAME,
+      </if>
+      <if test="loginPassword != null" >
+        LOGIN_PASSWORD,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="loginIp != null" >
+        LOGIN_IP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null" >
+        #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="loginIp != null" >
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lsq.db.model.DpUserInfo" >
+    update dp_user_info
+    <set >
+      <if test="loginPassword != null" >
+        LOGIN_PASSWORD = #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="loginIp != null" >
+        LOGIN_IP = #{loginIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+      and LOGIN_NAME = #{loginName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lsq.db.model.DpUserInfo" >
+    update dp_user_info
+    set LOGIN_PASSWORD = #{loginPassword,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=INTEGER},
+      LOGIN_IP = #{loginIp,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+      and LOGIN_NAME = #{loginName,jdbcType=VARCHAR}
+  </update>
+</mapper>
